@@ -16,14 +16,16 @@ export const Home = () => {
 				</Link>
 			</div >
 
-			{contacts.map((item, index) => {
+			<ContactCard />
+
+			{/* {contacts.map((item, index) => {
 
 				return (
 					<>
 						<ContactCard key={index} contact={item} />
 					</>
 				)
-			})}
+			})} */}
 
 		</>
 	)
