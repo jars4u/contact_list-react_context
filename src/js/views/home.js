@@ -10,9 +10,9 @@ export const Home = () => {
 
 	return (
 		<>
-			< div className="container" >
+			< div className="d-flex justify-content-end m-5" >
 				<Link to="/addContact">
-					<button className="btn btn-primary m-3">Agrega un nuevo contacto</button>
+					<button className="btn btn-primary">Agrega un nuevo contacto</button>
 				</Link>
 			</div >
 

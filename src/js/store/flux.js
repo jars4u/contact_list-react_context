@@ -23,7 +23,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 			createContact: async (contact) => {
 				try {
-					let response = await fetch(`${URLBASE}/`, {
+					let response = await fetch(`${store.URLBASE}/`, {
 						method: "POST",
 						headers: {
 							"Content-type": "application/json"
@@ -45,7 +45,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 			getAllContact: async () => {
 				try {
-					let response = await fetch(`${URLBASE}/agenda/${USERBASE}`)
+					let response = await fetch(`${store.URLBASE}/agenda/${store.USERBASE}`)
 					let data = await response.json()
 
 					if (response.ok) {
@@ -63,7 +63,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 			deleteContact: async (id) => {
 				try {
-					let response = await fetch(`${URLBASE}/${id}`, {
+					let response = await fetch(`${store.URLBASE}/${id}`, {
 						method: "DELETE"
 					})
 
@@ -80,7 +80,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 			updateContact: async (id, contact) => {
 				try {
-					let response = await fetch(`${URLBASE}/${id}`, {
+					let response = await fetch(`${store.URLBASE}/${id}`, {
 						method: "PUT",
 						headers: {
 							"Content-type": "application/json"
