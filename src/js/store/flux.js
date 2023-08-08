@@ -14,8 +14,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 			// 	}
 			// ]
 
-			URLBASE: "https://playground.4geeks.com/apis/fake/contact",
-			USERBASE: "myAgenda",
+			urlBase: "https://playground.4geeks.com/apis/fake/contact/",
+			userName: "myAgenda",
 			contacts: [],
 			id: "",
 		},
@@ -23,14 +23,14 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 			createContact: async (contact) => {
 				try {
-					let response = await fetch(`${store.URLBASE}/`, {
+					let response = await fetch(getStore().urlBase, {
 						method: "POST",
 						headers: {
 							"Content-type": "application/json"
 						},
 						body: JSON.stringify(contact),
 					})
-
+					console.log(response)
 					if (response.ok) {
 						getActions().getAllContact()
 
@@ -45,7 +45,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 			getAllContact: async () => {
 				try {
-					let response = await fetch(`${store.URLBASE}/agenda/${store.USERBASE}`)
+					let response = await fetch(getStore().urlBase + "agenda/" + getStore().userName)
 					let data = await response.json()
 
 					if (response.ok) {
@@ -63,7 +63,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 			deleteContact: async (id) => {
 				try {
-					let response = await fetch(`${store.URLBASE}/${id}`, {
+					let response = await fetch(getStore().urlBase + `${id}`, {
 						method: "DELETE"
 					})
 
@@ -80,7 +80,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 			updateContact: async (id, contact) => {
 				try {
-					let response = await fetch(`${store.URLBASE}/${id}`, {
+					let response = await fetch(getStore().urlBase + `${id}`, {
 						method: "PUT",
 						headers: {
 							"Content-type": "application/json"
