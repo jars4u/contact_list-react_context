@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Context } from "../store/appContext.js";
-import { ContactCard } from "../component/contactCard.jsx";
+import { ContactCard } from "../component/contactCard.js";
 import { Link, useParams } from "react-router-dom";
 import "../../styles/home.css";
 
@@ -79,53 +79,53 @@ export const AddContact = ({ update }) => {
 
 			{
 				update ?
-					<h1 className="text-center">Update a contact</h1>
+					<h1 className="text-center">Actualizar contacto</h1>
 					:
-					<h1 className="text-center">Add a new contact</h1>
+					<h1 className="text-center">Agregar un nuevo contacto</h1>
 			}
 
 
 			<form onSubmit={handleSubmit}>
 
-				<div className="p-1">
-					<label htmlFor="exampleFormControlInput1" className="form-label">Fullname</label>
+				<div className="pb-2">
+					<label htmlFor="full_name" className="form-label">Nombre Completo</label>
 					<input
 						type="text"
 						className="form-control"
-						placeholder="Fullname"
+						placeholder="Nombre y Apellido"
 						name="full_name"
 						onChange={handleChange}
 						value={contact.full_name}
 					/>
 				</div>
-				<div className="p-1">
-					<label htmlFor="exampleFormControlInput1" className="form-label">Email</label>
+				<div className="pb-2">
+					<label htmlFor="email" className="form-label">Email</label>
 					<input
 						type="email"
 						className="form-control"
-						placeholder="Enter email"
+						placeholder="Coloca un Email valido"
 						name="email"
 						onChange={handleChange}
 						value={contact.email}
 					/>
 				</div>
-				<div className="p-1">
-					<label htmlFor="exampleFormControlInput1" className="form-label">Phone</label>
+				<div className="pb-2">
+					<label htmlFor="phone" className="form-label">Telefono</label>
 					<input
 						type="tel"
 						className="form-control"
-						placeholder="Enter phone"
+						placeholder="Tu numero de telefono"
 						name="phone"
 						onChange={handleChange}
 						value={contact.phone}
 					/>
 				</div>
-				<div className="p-1">
-					<label htmlFor="exampleFormControlInput1" className="form-label">Address</label>
+				<div className="pb-2">
+					<label htmlFor="address" className="form-label">Direccion</label>
 					<input
 						type="text"
 						className="form-control"
-						placeholder="Enter address"
+						placeholder="Coloca tu direccion"
 						name="address"
 						onChange={handleChange}
 						value={contact.address}

@@ -19,10 +19,12 @@ export const ContactCard = ({ key, contact }) => {
                         </div>
                         <div className="col-md-8">
                             <span className='d-flex justify-content-end pt-2'>
-                                <FontAwesomeIcon
-                                    icon={faPencil} size="sm" style={{ color: "black", }}
-                                    className="m-2"
-                                />
+                                <Link to={`/add-contact/${contact.id}`} >
+                                    <FontAwesomeIcon
+                                        icon={faPencil} size="sm" style={{ color: "black", }}
+                                        className="m-2"
+                                    />
+                                </Link>
                                 <FontAwesomeIcon
                                     icon={faTrashCan} size="sm" style={{ color: "black", }}
                                     className="m-2"

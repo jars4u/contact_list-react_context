@@ -7,7 +7,6 @@ export const Navbar = () => {
 			<Link to="/">
 				<span className="navbar-brand mb-0 h1">My Contact List</span>
 			</Link>
-
 		</nav>
 	);
 };

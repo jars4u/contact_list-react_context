@@ -5,7 +5,7 @@ import ScrollToTop from "./component/scrollToTop";
 import { Home } from "./views/home";
 import { Demo } from "./views/demo";
 import { Single } from "./views/single";
-import { AddContact } from "./views/addContact.jsx";
+import { AddContact } from "./views/addContact";
 import injectContext from "./store/appContext";
 
 import { Navbar } from "./component/navbar";
@@ -21,7 +21,7 @@ const Layout = () => {
 		<div>
 			<BrowserRouter basename={basename}>
 				<ScrollToTop>
-					<Navbar />
+					{/* <Navbar /> */}
 					<Routes>
 						<Route path="/" element={<Home />} />
 						<Route path="/addcontact" element={<AddContact update={false} />} />
