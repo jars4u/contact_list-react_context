@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 
 
 
-export const ContactCard = () => {
+export const ContactCard = ({ key, contact }) => {
     const { store, actions } = useContext(Context);
 
     return (
