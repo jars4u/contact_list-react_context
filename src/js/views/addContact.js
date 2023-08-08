@@ -1,6 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Context } from "../store/appContext.js";
-import { ContactCard } from "../component/contactCard.js";
 import { Link, useParams } from "react-router-dom";
 import "../../styles/home.css";
 
@@ -23,16 +22,16 @@ export const AddContact = ({ update }) => {
 	const params = useParams()
 
 
-	// function findContact() {
-	// 	let exists = store.allContacts.find((item) => item.id == params.contactId)
-	// 	if (exists) {
-	// 		setContact(
-	// 			exists
-	// 		)
-	// 	}
-	// }
+	const showContact = () => {
+		let exists = store.contacts.find((item) => item.id == params.contactId)
+		if (exists) {
+			setContact(
+				exists
+			)
+		}
+	}
 
-	function handleChange({ target }) {
+	const handleChange = ({ target }) => {
 		setContact({
 			...contact,
 			[target.name]: target.value,
@@ -40,37 +39,22 @@ export const AddContact = ({ update }) => {
 		})
 	}
 
-	function handleSubmit(event) {
+	const handleSubmit = (event) => {
 		event.preventDefault()
-		actions.createContact(contact);
-		// console.log(update)
 
-		// if (contact) {
+		if (update == false) {
+			actions.createContact(contact);
+			console.log("Contacto creado!")
+		} else {
+			actions.updateContact(params.contactId, contact);
+			console.log("Contacto editado exitosamente!")
 
-		// 	if (update) { //verifica que se va a hacer un update
-		// 		allContacts.map((item, index) => {
-		// 			//console.log(item.id)
-		// 			if (update) {
-		// 				actions.updateContact(contact, item.id)
-		// 			}
-		// 		})
-		// 	} else {
-		// 		actions.createContact(contact);
-		// 	}
-		// 	setContact(
-		// 		{
-		// 			full_name: "",
-		// 			email: "",
-		// 			address: "",
-		// 			phone: ""
-		// 		}
-		// 	)
-		// }
+		}
 	}
 
 	useEffect(() => {
 		if (params.contactId) {
-			findContact()
+			showContact()
 		}
 	}, [])
 
@@ -135,13 +119,11 @@ export const AddContact = ({ update }) => {
 				<div className="d-flex justify-content-end pt-3">
 					<div className="pe-3">
 						<Link to={"/"}>
-							<button type="button" className="btn btn-danger">Cancelar</button>
+							<button type="button" className="btn btn-warning">get back to Contact List</button>
 						</Link>
 					</div>
 					<div>
-						<Link to={"/"}>
-							<button type="submit" className="btn btn-primary">Guardar</button>
-						</Link>
+						<button type="submit" className="btn btn-primary">Guardar</button>
 					</div>
 				</div>
 

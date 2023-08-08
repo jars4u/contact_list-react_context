@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext } from 'react';
 import { Context } from "../store/appContext.js";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPencil, faTrashCan } from '@fortawesome/free-solid-svg-icons'
@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 
 
 
-export const ContactCard = ({ key, contact }) => {
+export const ContactCard = ({ contact }) => {
     const { store, actions } = useContext(Context);
 
     return (
@@ -15,22 +15,24 @@ export const ContactCard = ({ key, contact }) => {
                 <div className="card mb-3">
                     <div className="row g-0">
                         <div className="col-md-4">
-                            <img src="https://img.freepik.com/iconos-gratis/usuario_318-928479.jpg" className="img-fluid rounded-1 p-2" alt="contact-image" />
+                            <img
+                                src="https://img.freepik.com/iconos-gratis/usuario_318-928479.jpg"
+                                className="img-fluid rounded-1 p-2" alt="contact-image" />
                         </div>
                         <div className="col-md-8">
-                            <span className='d-flex justify-content-end pt-2'>
-                                <Link to={`/add-contact/${contact.id}`} >
+                            <div className='d-flex justify-content-end pt-2'>
+                                <Link to={`/addContact/${contact.id}`} >
                                     <FontAwesomeIcon
                                         icon={faPencil} size="sm" style={{ color: "black", }}
-                                        className="m-2"
+                                        className="btn"
                                     />
                                 </Link>
                                 <FontAwesomeIcon
                                     icon={faTrashCan} size="sm" style={{ color: "black", }}
-                                    className="m-2"
-                                // onClick={() => handleShow()}
+                                    className="btn"
+                                    onClick={() => actions.deleteContact(contact.id)}
                                 />
-                            </span>
+                            </div>
                             {/* <div className="card-body m-0">
                                 <h5 className="card-title fs-3 ps-1 m-0"><strong>Juan A. Ramos S.</strong></h5>
                                 <p className="card-text ps-1 m-0">Urb. La Alhambra, calle 11A #8-36.</p>

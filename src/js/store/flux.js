@@ -1,19 +1,7 @@
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
-			// demo: [
-			// 	{
-			// 		title: "FIRST",
-			// 		background: "white",
-			// 		initial: "white"
-			// 	},
-			// 	{
-			// 		title: "SECOND",
-			// 		background: "white",
-			// 		initial: "white"
-			// 	}
-			// ]
-
+			
 			urlBase: "https://playground.4geeks.com/apis/fake/contact/",
 			userName: "myAgenda",
 			contacts: [],
@@ -66,7 +54,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					let response = await fetch(getStore().urlBase + `${id}`, {
 						method: "DELETE"
 					})
-
+					console.log(response)
 					if (response.ok) {
 						getActions().getAllContact()
 					} else {
